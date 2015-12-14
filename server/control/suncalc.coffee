@@ -8,7 +8,7 @@ helpers = require '../helpers'
 
 module.exports = (config, eventBus) ->
   console.log 'Initializing Suncalc Control Plugin'
-  setTimeout run(config, eventBus), 10000
+  setTimeout run(config, eventBus), 60000
   run(config, eventBus)()
 
 run = (config, eventBus) -> ->
