@@ -17,13 +17,16 @@ module.exports =
   rooms: rooms
   plugins: [
     'protocols/x10'
+    'protocols/kaku'
   ]
+  web:
+    port: 8080
   x10:
     mochad:
       host: '127.0.0.1'
       port: 1099
-  web:
-    port: 8080
+  kaku:
+    cmd: 'sudo /home/pi/node-projects/kakutest/transmitters/kaku/kaku -p 15'
 
 
 #
