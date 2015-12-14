@@ -19,7 +19,7 @@ module.exports = (config, eventEmitter) ->
       exec "#{config.kaku.cmd} -g #{device.kaku.group} -n #{device.kaku.address} on"
       device.state.on = true
     else
-      exec "#{config.kaku.cmd} -g #{device.kaku.group} -n #{device.kaku.address} on"
+      exec "#{config.kaku.cmd} -g #{device.kaku.group} -n #{device.kaku.address} off"
       device.state.on = false
 
     eventEmitter.emit '/object/state/changed', device
