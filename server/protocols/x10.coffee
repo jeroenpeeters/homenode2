@@ -13,9 +13,10 @@ module.exports = (config, eventEmitter) ->
 
   readX10Events config, eventEmitter
 
-  eventEmitter.on '/object/state/desired', (device) ->
+  eventEmitter.on '/object/state/desired', (device, desiredState) ->
     return unless device.x10
-    if device.state.on == true
+    console.log 'desired = ',desiredState
+    if desiredState.on == true
       sendOn device.x10.address, config
     else
       sendOff device.x10.address, config

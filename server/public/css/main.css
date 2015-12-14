@@ -1,0 +1,44 @@
+html {
+  margin: 0px;
+  padding: 0px;
+  background: black;
+}
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: black;
+}
+
+.objectItemList {
+  padding: 10px;
+}
+
+.objectItem {
+  display: inline-block;
+  width: 200px;
+  height: 125px;
+  color: white;
+  border: 1px solid #C4EEFF;
+  background: #1F84B8;
+  padding: 10px;
+  padding-top:20px;
+  border-radius: 2px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  text-align:center;
+  font-family: 'Roboto', sans-serif;
+  text-decoration:none;
+}
+
+.objectItem:active {
+  background: #1D428A;
+  border: 1px solid #1F84B8;
+}
+
+.objectItem img {
+  margin-top: 15px;
+  margin-bottom: 10px;
+  width:40px;
+}

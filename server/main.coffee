@@ -15,6 +15,6 @@ for pluginName in config.plugins
 eventEmitter.on '/object/state/changed', (object) ->
   console.log 'object state changed', object
 
-setTimeout ->
-  eventEmitter.emit '/object/state/desired', config.rooms.Tuin.objects[1]
-, 10000
+# setTimeout ->
+#   eventEmitter.emit '/object/state/desired', config.rooms.Tuin.objects[1]
+# , 10000
