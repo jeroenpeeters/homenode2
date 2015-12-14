@@ -83,7 +83,7 @@ readX10Events = (config, eventEmitter)->
       cmdArray = unwrapCommand(commands[i])
       # ignore messages that are not understood, like:
       # 12/14 19:58:57 Invalid checksum
-      if cmdArray.length >= 17
+      if cmdArray and cmdArray.length >= 17
         cmd =
           txrx: cmdArray[6]
           iface: cmdArray[7]
