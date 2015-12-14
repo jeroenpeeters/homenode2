@@ -81,18 +81,21 @@ readX10Events = (config, eventEmitter)->
 
     while i < commands.length
       cmdArray = unwrapCommand(commands[i])
-      cmd =
-        txrx: cmdArray[6]
-        iface: cmdArray[7]
-        address: cmdArray[8]
-        house: cmdArray[16]
-        cmd: cmdArray[17]
+      # ignore messages that are not understood, like:
+      # 12/14 19:58:57 Invalid checksum
+      if cmdArray.length >= 17
+        cmd =
+          txrx: cmdArray[6]
+          iface: cmdArray[7]
+          address: cmdArray[8]
+          house: cmdArray[16]
+          cmd: cmdArray[17]
 
-      for object in helpers.getObjects config
-        if object.x10?.address is cmd.address.toLowerCase()
-          object.state.on = cmd.cmd.toLowerCase() is 'on'
-          eventEmitter.emit '/object/state/changed', object
-          #pubsub.publish '/model/devices', device
+        for object in helpers.getObjects config
+          if object.x10?.address is cmd.address.toLowerCase()
+            object.state.on = cmd.cmd.toLowerCase() is 'on'
+            eventEmitter.emit '/object/state/changed', object
+            #pubsub.publish '/model/devices', device
       i++
 
   client.on "error", (error) ->
