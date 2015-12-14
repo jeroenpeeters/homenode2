@@ -1,14 +1,15 @@
 require('./server/types').install @
 
-schemerlamp       = @kaku('12493714', 0) @lamp 'Schemerlamp'
-pianolamp         = @kaku('12493714', 1) @lamp 'Pianolamp'
+tafellamp         = @kaku('12493714', 0) @lamp 'Tafellamp'
+schemerlamp       = @kaku('12493714', 1) @lamp 'Schemerlamp'
+pianolamp         = @kaku('12493714', 2) @lamp 'Pianolamp'
 schuurlamp_buiten = @x10('b1') @dimmable @lamp 'Schuurlamp buiten'
 schuurlamp_binnen = @x10('b2') @dimmable @lamp 'Schuurlamp binnen'
 
 rooms =
   Huiskamer:
     icon: 'home'
-    objects: [ schemerlamp, pianolamp ]
+    objects: [ tafellamp, schemerlamp, pianolamp ]
   Tuin:
     icon: 'maps:local-florist'
     objects: [ schuurlamp_buiten, schuurlamp_binnen ]
