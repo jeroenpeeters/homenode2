@@ -19,7 +19,20 @@ module.exports =
   plugins: [
     'protocols/x10'
     'protocols/kaku'
+    'control/suncalc'
   ]
+  suncalc:
+    lat: 52.1672
+    lng: 4.5346
+    sunriseEnd: [
+      object: schuurlamp_buiten
+      desiredState: on: false
+    ]
+    sunsetStart: [
+      object: schuurlamp_buiten
+      desiredState: on: true
+    ]
+
   web:
     port: 8080
   x10:

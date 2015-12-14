@@ -3,6 +3,7 @@ config       = require '../config'
 EventEmitter = require 'events'
 
 eventEmitter = new EventEmitter()
+eventEmitter.setMaxListeners 3
 
 web = require('./web') config, eventEmitter
 
@@ -10,11 +11,3 @@ web = require('./web') config, eventEmitter
 for pluginName in config.plugins
   plugin = require "./#{pluginName}"
   plugin config, eventEmitter
-
-
-eventEmitter.on '/object/state/changed', (object) ->
-  console.log 'object state changed', object
-
-# setTimeout ->
-#   eventEmitter.emit '/object/state/desired', config.rooms.Tuin.objects[1]
-# , 10000
