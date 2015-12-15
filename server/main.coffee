@@ -3,7 +3,7 @@ config       = require '../config'
 EventEmitter = require 'events'
 
 eventEmitter = new EventEmitter()
-eventEmitter.setMaxListeners 3
+eventEmitter.setMaxListeners 50
 
 web = require('./web') config, eventEmitter
 

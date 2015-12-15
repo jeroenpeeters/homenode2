@@ -13,12 +13,13 @@ module.exports = (config, eventBus)->
     res.setHeader 'Content-Type', 'text/event-stream; charset=utf-8'
     res.setHeader 'Transfer-Encoding', 'chunked'
 
-    eventBus.on '/object/state/changed', (object) ->
+    cb = (object) ->
       res.write "event: /object/state/changed\n"
       res.write "data: #{JSON.stringify object}\n\n"
+    eventBus.on '/object/state/changed', cb
 
     res.on 'close', ->
-      console.log 'client exited'
+      eventBus.removeListener '/object/state/changed', cb
 
   app.get '/api/v1/object/list', (req, res) ->
     res.json helpers.getObjects(config)
