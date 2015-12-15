@@ -12,7 +12,7 @@ module.exports = (config, eventBus) ->
   run(config, eventBus)()
 
 run = (config, eventBus) -> ->
-  di = SunCalc.getTimes new Date(new Date - 60000*30), config.suncalc.lat, config.suncalc.lng
+  di = SunCalc.getTimes new Date(), config.suncalc.lat, config.suncalc.lng
   winners = selectWinners (evaluateCandidates di[prop], config.suncalc[prop] for prop of di when config.suncalc[prop])
   for winner in winners when !_.isMatch winner.object.state, winner.desiredState
     console.log "SunCalc is changing the state", winner
