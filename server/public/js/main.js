@@ -1,10 +1,19 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-var ObjectItem = React.createClass({
+var Tile = React.createClass({
   render: function() {
-    var img = this.props.item.state.on ? '/images/bulb-on.png' : '/images/bulb.png'
-    return <a href="#" className="objectItem" onClick={this.handleClick}><img src={img} /><br />{this.props.item.name}</a>;
+    var stateClass = this.props.item.state.on ? 'tile-badge on' : 'tile-badge off'
+    return (
+      <div className="tile bg-darkBlue fg-white" onClick={this.handleClick}>
+        <div className="tile-content iconic">
+            <span className="tile-label">{this.props.item.name}</span>
+            <span className={stateClass}></span>
+            <span className="icon mif-lamp"></span>
+        </div>
+      </div>
+    );
+    //return <a href="#" className="objectItem" onClick={this.handleClick}><img src={img} /><br />{this.props.item.name}</a>;
   },
   handleClick: function(event){
     newState = {on: !this.props.item.state.on}
@@ -20,7 +29,7 @@ var ObjectItem = React.createClass({
   }
 });
 
-var UserGist = React.createClass({
+var Tiles = React.createClass({
   getInitialState: function() {
     return {objects:[]};
   },
@@ -53,16 +62,13 @@ var UserGist = React.createClass({
 
   render: function() {
     return (
-      <div className="objectItemList">
+      <span>
         {this.state.objects.map(function(item){
-          return <ObjectItem key={item.id} item={item}/>
+          return <Tile key={item.id} item={item}/>
         })}
-      </div>
+      </span>
     );
   }
 });
 
-ReactDOM.render(
-  <UserGist source="https://api.github.com/users/octocat/gists" />,
-  document.getElementById('example')
-);
+ReactDOM.render(<Tiles />, document.getElementById('tile-container'));

@@ -18927,18 +18927,27 @@ module.exports = require('./lib/React');
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-var ObjectItem = React.createClass({
-  displayName: 'ObjectItem',
+var Tile = React.createClass({
+  displayName: 'Tile',
 
   render: function () {
-    var img = this.props.item.state.on ? '/images/bulb-on.png' : '/images/bulb.png';
+    var stateClass = this.props.item.state.on ? 'tile-badge on' : 'tile-badge off';
     return React.createElement(
-      'a',
-      { href: '#', className: 'objectItem', onClick: this.handleClick },
-      React.createElement('img', { src: img }),
-      React.createElement('br', null),
-      this.props.item.name
+      'div',
+      { className: 'tile bg-darkBlue fg-white', onClick: this.handleClick },
+      React.createElement(
+        'div',
+        { className: 'tile-content iconic' },
+        React.createElement(
+          'span',
+          { className: 'tile-label' },
+          this.props.item.name
+        ),
+        React.createElement('span', { className: stateClass }),
+        React.createElement('span', { className: 'icon mif-lamp' })
+      )
     );
+    //return <a href="#" className="objectItem" onClick={this.handleClick}><img src={img} /><br />{this.props.item.name}</a>;
   },
   handleClick: function (event) {
     newState = { on: !this.props.item.state.on };
@@ -18954,8 +18963,8 @@ var ObjectItem = React.createClass({
   }
 });
 
-var UserGist = React.createClass({
-  displayName: 'UserGist',
+var Tiles = React.createClass({
+  displayName: 'Tiles',
 
   getInitialState: function () {
     return { objects: [] };
@@ -18989,16 +18998,16 @@ var UserGist = React.createClass({
 
   render: function () {
     return React.createElement(
-      'div',
-      { className: 'objectItemList' },
+      'span',
+      null,
       this.state.objects.map(function (item) {
-        return React.createElement(ObjectItem, { key: item.id, item: item });
+        return React.createElement(Tile, { key: item.id, item: item });
       })
     );
   }
 });
 
-ReactDOM.render(React.createElement(UserGist, { source: 'https://api.github.com/users/octocat/gists' }), document.getElementById('example'));
+ReactDOM.render(React.createElement(Tiles, null), document.getElementById('tile-container'));
 
 },{"react":157,"react-dom":1}],159:[function(require,module,exports){
 // shim for using process in browser
