@@ -1,51 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html style="height:100vh">
   <head>
     <meta charset="UTF-8" />
     <title>Homenode2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=2">
     <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
-    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <!-- <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Roboto'> -->
+    <link rel='stylesheet' type='text/css' href="/metro/css/metro.css" rel="stylesheet">
+    <link rel='stylesheet' type='text/css' href="/metro/css/metro-icons.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="/metro/js/metro.js"></script>
     <script src="/js/screenfull.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="/css/main.css">
   </head>
-  <body>
+  <body style="height:100vh">
+    <!-- <h1>Hello world!</h1>
+    <div class="countdown" data-role="countdown" data-days="2"></div>
+    <div class="tile bg-cyan">
+        <div class="brand">
+            <div class="badge available"></div>
+        </div>
+    </div>
     <div id="example"></div>
-  </body>
-  <div style="text-align:center">
-    <button id="goFS">Go fullscreen</button>
-  </div>
+  </body> -->
 
-  <script src="/js/bundle.js"></script>
-  <script>
-     document.fullscreenEnabled = document.fullscreenEnabled || document.mozFullScreenEnabled || document.documentElement.webkitRequestFullScreen;
+    <div class="tile-area fg-white tile-area-scheme-dark">
+      <h1 class="tile-area-title">Homenode</h1>
+      <div class="tile-group" style="left: 0px;">
+          <span class="tile-group-title">Huiskamer</span>
 
-    function requestFullscreen(element) {
-        if (element.requestFullscreen) {
-            element.requestFullscreen();
-        } else if (element.mozRequestFullScreen) {
-            element.mozRequestFullScreen();
-        } else if (element.webkitRequestFullScreen) {
-            element.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
-        }
-    }
+          <div id="tile-container" class="tile-container">
 
-    goFS.addEventListener("click", function() {
-       if (document.fullscreenEnabled) {
-           requestFullscreen(document.documentElement);
-       }
-    }, false);
+            <div class="tile bg-darkBlue fg-white">
+              <div class="tile-content iconic">
+                  <span class="tile-label">Eettafel</span>
+                  <span class="tile-badge available"></span>
+                  <span class="icon mif-lamp"></span>
+              </div>
+            </div>
 
-    var isFullScreen = false;
-    var screen_change_events = "webkitfullscreenchange mozfullscreenchange fullscreenchange MSFullscreenChange";
-    $(document).on(screen_change_events, function (e) {
-      isFullScreen = !isFullScreen;
-      if(isFullScreen){
-        $(goFS).hide()
-      } else {
-        $(goFS).show()
+          </div>
+      </div>
+    </div>
+
+    <div style="text-align:center">
+      <button id="goFS">Go fullscreen</button>
+    </div>
+
+    <script src="/js/bundle.js"></script>
+    <script>
+       document.fullscreenEnabled = document.fullscreenEnabled || document.mozFullScreenEnabled || document.documentElement.webkitRequestFullScreen;
+
+      function requestFullscreen(element) {
+          if (element.requestFullscreen) {
+              element.requestFullscreen();
+          } else if (element.mozRequestFullScreen) {
+              element.mozRequestFullScreen();
+          } else if (element.webkitRequestFullScreen) {
+              element.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+          }
       }
-    });
 
-  </script>
+      goFS.addEventListener("click", function() {
+         if (document.fullscreenEnabled) {
+             requestFullscreen(document.documentElement);
+         }
+      }, false);
+
+      var isFullScreen = false;
+      var screen_change_events = "webkitfullscreenchange mozfullscreenchange fullscreenchange MSFullscreenChange";
+      $(document).on(screen_change_events, function (e) {
+        isFullScreen = !isFullScreen;
+        if(isFullScreen){
+          $(goFS).hide()
+        } else {
+          $(goFS).show()
+        }
+      });
+
+    </script>
+  </body>
 </html>
